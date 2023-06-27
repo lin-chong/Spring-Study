@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="User" class="com.llt.entity.User">
+    </bean>
+    <!-- 构造函数实例化, 使用默认构造函数(无参构造函数)-->
+
+
+    <!--    <bean id="userService" class="com.llt.service.UserService">-->
+    <!--    </bean>-->
+    <bean name="userService" class="com.llt.service.UserService">
+    </bean>
+    <!--别名-->
+    <alias name="userService" alias="userService2"/>
+
+    <!--    静态工厂创建bean-->
+    <bean name="userServiceStaticFactory" class="com.llt.factory.UserServiceFactory"
+          factory-method="creteStaticFactoryInstance">
+    </bean>
+
+
+    <!--    工厂创建-->
+    <bean name="userServiceFactoryLoad" class="com.llt.factory.UserServiceFactory">
+    </bean>
+
+    <bean name="userServiceFactory" factory-bean="userServiceFactoryLoad" factory-method="createFactoryInstance">
+    </bean>
+
+    <!--构造函数注入-->
+    <bean id="account" class="com.llt.entity.Account">
+        <constructor-arg index="0" value="llt">
+        </constructor-arg>
+        <constructor-arg index="1" value="100">
+        </constructor-arg>
+    </bean>
+
+    <bean id="account1" class="com.llt.entity.Account">
+        <constructor-arg type="java.lang.String" value="llc">
+        </constructor-arg>
+        <constructor-arg type="int" value="101">
+        </constructor-arg>
+    </bean>
+
+    <bean id="account2" class="com.llt.entity.Account">
+        <constructor-arg name="name" value="llT">
+        </constructor-arg>
+        <constructor-arg name="balance" value="102">
+        </constructor-arg>
+    </bean>
+
+
+    <!--Setter依赖注入-->
+
+    <bean id="user" class="com.llt.entity.User">
+    </bean>
+    <bean id="accountSetter" class="com.llt.entity.Account">
+        <constructor-arg name="name" value="llT">
+        </constructor-arg>
+        <constructor-arg name="balance" value="102">
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="setterBean" class="com.llt.entity.SetterBean">
+        <property name="account" ref="accountSetter"></property>
+        <property name="user" ref="user"></property>
+        <property name="i" value="1001"></property>
+    </bean>
+
+
+    <!--懒加载bean-->
+    <bean id="lazyBean" class="com.llt.entity.LazyBean" lazy-init="true">
+    </bean>
+</beans>

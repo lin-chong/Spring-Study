@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--    依赖注入-构造函数注入 -->
+    <bean id="serviceTwo" class="com.llt.service.ServiceTwo">
+    </bean>
+
+    <bean id="serviceThree" class="com.llt.service.ServiceThree">
+    </bean>
+    <bean id="serviceOne" class="com.llt.service.ServiceOne">
+        <constructor-arg ref="serviceTwo">
+        </constructor-arg>
+        <constructor-arg ref="serviceThree">
+        </constructor-arg>
+    </bean>
+
+
+</beans>
