@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -15,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AccountTest {
 
 
+    @Autowired
     private ClassPathXmlApplicationContext context;
 
     @Before
@@ -48,12 +50,11 @@ public class AccountTest {
     }
 
 
-
     @Test
-    public void setterBeanBean(){
+    public void setterBeanBean() {
         SetterBean setterBean = context.getBean("setterBean", SetterBean.class);
 
-        Assert.assertEquals("llT",setterBean.getAccount().getName());
+        Assert.assertEquals("llT", setterBean.getAccount().getName());
         System.out.println(setterBean);
     }
 }

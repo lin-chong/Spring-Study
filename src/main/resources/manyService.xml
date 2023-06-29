@@ -19,4 +19,16 @@
     </bean>
 
 
+    <!--    原型和单例-->
+    <bean id="serviceTwo1" class="com.llt.service.ServiceTwo" scope="prototype">
+    </bean>
+
+    <bean id="serviceThree1" class="com.llt.service.ServiceThree">
+    </bean>
+    <bean id="serviceOne1" class="com.llt.service.ServiceOne">
+        <constructor-arg ref="serviceTwo1">
+        </constructor-arg>
+        <constructor-arg ref="serviceThree1">
+        </constructor-arg>
+    </bean>
 </beans>

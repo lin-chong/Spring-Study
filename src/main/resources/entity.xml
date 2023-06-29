@@ -65,13 +65,15 @@
 
 
     <bean id="setterBean" class="com.llt.entity.SetterBean">
-        <property name="account" ref="accountSetter"></property>
-        <property name="user" ref="user"></property>
-        <property name="i" value="1001"></property>
+        <property name="account" ref="accountSetter"/>
+        <property name="user" ref="user"/>
+        <property name="i" value="1001"/>
     </bean>
 
 
     <!--懒加载bean-->
     <bean id="lazyBean" class="com.llt.entity.LazyBean" lazy-init="true">
     </bean>
+    <!--autowire-candidate="false"  关闭自动注入-->
+    <bean id="autowireBean" class="com.llt.entity.AutowireBean" primary="true"/>
 </beans>

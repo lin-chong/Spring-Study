@@ -1,6 +1,8 @@
 package user;
 
 import com.llt.service.ServiceOne;
+import com.llt.service.ServiceThree;
+import com.llt.service.ServiceTwo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,5 +25,20 @@ public class ManyService {
     public void ServiceOneInstance() {
         ServiceOne serviceOne = context.getBean("serviceOne", ServiceOne.class);
         System.out.println(serviceOne);
+    }
+
+
+    /*
+    * Singleton And Prototype
+    * */
+    @Test
+    public void singletonAndPrototype() {
+        ServiceOne serviceOne = context.getBean("serviceOne1", ServiceOne.class);
+        ServiceTwo serviceTwo = serviceOne.getServiceTwo();
+        System.out.println("serviceTwo: " + serviceTwo);
+        ServiceThree serviceThree = serviceOne.getServiceThree();
+        System.out.println("serviceThree: " + serviceThree);
+        ServiceTwo serviceTwo1 = context.getBean("serviceTwo1", ServiceTwo.class);
+        System.out.println(serviceTwo1);
     }
 }
